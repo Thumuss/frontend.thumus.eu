@@ -1,5 +1,5 @@
 import { IBinary, IDirectory, Helper } from "../base";
-import { evaluate, lexer, parse, types } from "../interpretor/src/import";
+import { evaluate, lexer, parse, types } from "../interpretor/src/runner";
 
 class Command extends IBinary{
     execute(args: string[], env: Helper): string {

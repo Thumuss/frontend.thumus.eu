@@ -1,6 +1,6 @@
 import { IBinary, IDirectory, Helper, ITypes, createFromJSON } from "./base"
 import commander from "./commander"
-import { evaluate, lexer, parse } from "./interpretor/src/import";
+import { evaluate, lexer, parse } from "./interpretor/src/runner";
 import type { PrimitivesJS } from "./interpretor/src/types";
 const root = createFromJSON({
     name: "/",
