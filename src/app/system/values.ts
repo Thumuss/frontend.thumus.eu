@@ -1,6 +1,6 @@
 import { IBinary, IDirectory, Helper, ITypes, createFromJSON } from "./base"
 import commander from "./commander"
-import { evaluate, lexer, parse } from "./interpretor/src/runner";
+import { run } from "./interpretor/build/runner";
 import type { PrimitivesJS } from "./interpretor/src/types";
 const root = createFromJSON({
     name: "/",
@@ -265,6 +265,8 @@ const ENVIRONNEMENT: Helper = {
     root,
     wd,
     bridge: {
+        global_functions: {},
+        global_variables: {},
         err: console.log,
         exec,
         out: console.log
@@ -293,9 +295,7 @@ function exec(vals: string[] | string){
 
 async function prompts(val: string, out: (...args: PrimitivesJS[]) => void | Promise<void>) {
     ENVIRONNEMENT.bridge.out = out;
-    ENVIRONNEMENT.bridge.err = out;
-    const lex = lexer(val.split(" ").join(" "));
-    const parser = parse(lex);
-    await evaluate(parser.parsed[0], ENVIRONNEMENT.bridge);
+    ENVIRONNEMENT.bridge.err = out;   
+    await run(val, ENVIRONNEMENT.bridge);
 }
 export { root, prompts };
