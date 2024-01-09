@@ -1,0 +1,3 @@
+[submodule "yash.thumus.eu"]
+	path = src/app/system/interpretor
+	url = git@github.com:Thumuss/yash.thumus.eu.git
