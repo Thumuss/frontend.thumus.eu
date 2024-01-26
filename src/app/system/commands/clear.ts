@@ -1,8 +1,10 @@
 import { IBinary, IDirectory, Helper } from "../base";
+import path from "path";
 
 class Command extends IBinary{
     execute(args: string[], env: Helper): string {
-        return env.wd.toPath();
+        env.bridge.out()
+        return ""
     }
 }
 

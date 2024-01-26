@@ -3,14 +3,20 @@
 import styles from "./page.module.css";
 import { IText, ITypes, TObject } from "./system/base";
 import { PrimitivesJS } from "./system/interpretor/src/types";
-import { root, prompts } from "./system/values";
-import { useState } from "react";
+import { root, prompts, ENVIRONNEMENT } from "./system/values";
+import { useEffect, useState } from "react";
 export default function Home() {
-  const [prompt, setPrompt] = useState((root.find("/etc/bashrc") as IText).content)
+  const [prompt, setPrompt] = useState(
+    (root.find("/etc/bashrc") as IText).content
+  );
   const [inout, setInputOutput] = useState({
     in: "",
     out: prompt,
   });
+
+  const clear = () => setInputOutput((_) => ({ in: "", out: "" }));
+  ENVIRONNEMENT.bridge.global_functions["clear"] = clear;
+
   const handleKeyDown = (event: { key: string }) => {
     if (event.key === "Enter") {
       let stack = "";
@@ -20,7 +26,9 @@ export default function Home() {
       prompts(inout.in, out).then(() => {
         setInputOutput({
           in: "",
-          out: `${inout.out}${inout.in}\n${stack}${stack.endsWith("\n") || stack == "" ? "" : "\n"}${prompt}`,
+          out: `${inout.out}${inout.in}\n${stack}${
+            stack.endsWith("\n") || stack == "" ? "" : "\n"
+          }${prompt}`,
         });
       });
     }

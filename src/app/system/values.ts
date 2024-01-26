@@ -298,4 +298,4 @@ async function prompts(val: string, out: (...args: PrimitivesJS[]) => void | Pro
     ENVIRONNEMENT.bridge.err = out;   
     await run(val, ENVIRONNEMENT.bridge);
 }
-export { root, prompts };
+export { root, prompts, ENVIRONNEMENT };
