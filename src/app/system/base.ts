@@ -155,6 +155,10 @@ class IDirectory extends IObject{
         this.childs = childs;
     }
 
+    add(child: TObject[] | TObject): void {
+        this.childs.push(...(child instanceof Array ? child : [child]));
+    }
+
     get type(): ITypes {
         return ITypes.Directory;
     }

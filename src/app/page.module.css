@@ -1,36 +1,23 @@
 .main {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  max-height: 80vh;
-  min-height: 80vh;
-  overflow: scroll;
-}
-
-.title {
-  font-size: 80px;  
-  background: linear-gradient(45deg, var(--contrast-color), var(--acc-color));
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+  overflow: hidden;
 }
 
 .input {
   all: unset;
-  display: inline-block;
-  width: max-content;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   /*border: 1px solid red;*/
 }
+
+.input{ color:transparent }
+.input::selection{ color:transparent }
 
 .text {
   width: 100%;
   word-wrap: break-word;
   white-space: pre-line;
-}
-
-.fixedname {
-  display: inline-block;
-  text-align: center;
-  inline-size: 500px;
+  color: white
 }

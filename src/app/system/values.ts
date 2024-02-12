@@ -81,7 +81,14 @@ const root = createFromJSON({
             {
                 name: "motd",
                 type: ITypes.Text,
-                content: "Bonjour!"
+                content: `Welcome to my website!
+Here you will see a part of my work.
+It uses yash (https://github.com/Thumuss/yash.thumus.eu),
+a bashlike written in typescript!
+
+Please have a look and try \`help\` for more info!
+
+To edit this message, change the file at \`/etc/motd\``
             },
             {
                 name: "mtab",
