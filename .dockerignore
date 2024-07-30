@@ -1,0 +1,6 @@
+out
+.next
+.git
+.gitignore
+test
+node_modules
